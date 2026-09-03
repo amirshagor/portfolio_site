@@ -4,21 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohammad Amir Khan | Digital Marketing Specialist</title>
+<meta name="description" content="Mohammad Amir Khan - Digital Marketing Specialist, Paid Media Buyer and Conversion Tracking Expert. Meta Ads, Google Ads and TikTok Ads campaigns built for lead generation and eCommerce growth.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
+/* ---------------------------------------------------------------
+   TOKENS
+---------------------------------------------------------------- */
+:root{
+    --bg:#05070f;
+    --panel:#090e1a;
+    --cyan:#22d3ee;
+    --cyan-soft:#67e8f9;
+    --violet:#a855f7;
+    --blue:#3b82f6;
+    --text:#e6edf6;
+    --muted:#8b9bb4;
+    --line:rgba(255,255,255,0.09);
+    --glass:linear-gradient(160deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015));
+    --display:'Orbitron',sans-serif;
+    --body:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#081120;
-    color:#fff;
-    line-height:1.6;
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
 }
 
+body{
+    font-family:var(--body);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* ---------------------------------------------------------------
+   AMBIENT BACKGROUND (grid + aurora)
+---------------------------------------------------------------- */
+.bg-layer{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    background:
+        radial-gradient(900px 500px at 12% -5%,rgba(34,211,238,0.16),transparent 60%),
+        radial-gradient(800px 600px at 92% 8%,rgba(168,85,247,0.13),transparent 60%),
+        radial-gradient(900px 700px at 50% 105%,rgba(59,130,246,0.12),transparent 60%),
+        var(--bg);
+}
+
+.bg-grid{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background-image:
+        linear-gradient(rgba(34,211,238,0.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(34,211,238,0.07) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+}
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:0.5;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.orb-1{
+    width:420px;
+    height:420px;
+    top:-120px;
+    left:-100px;
+    background:rgba(34,211,238,0.32);
+    animation:drift 18s ease-in-out infinite;
+}
+
+.orb-2{
+    width:380px;
+    height:380px;
+    bottom:8%;
+    right:-120px;
+    background:rgba(168,85,247,0.28);
+    animation:drift 22s ease-in-out infinite reverse;
+}
+
+@keyframes drift{
+    0%,100%{ transform:translate3d(0,0,0) scale(1); }
+    50%{ transform:translate3d(60px,50px,0) scale(1.12); }
+}
+
+/* ---------------------------------------------------------------
+   LAYOUT PRIMITIVES
+---------------------------------------------------------------- */
 .container{
     width:90%;
     max-width:1200px;
@@ -26,23 +119,231 @@ body{
 }
 
 section{
-    padding:80px 0;
+    padding:110px 0;
+    position:relative;
 }
 
-h1,h2,h3{
-    font-weight:bold;
+h1,h2,h3,h4,.stat-number,.slider-count{
+    font-family:var(--display);
+    font-weight:700;
+    letter-spacing:0.5px;
 }
 
 .highlight{
-    color:#22d3ee;
+    background:linear-gradient(100deg,var(--cyan),var(--violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
+.kicker{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    font-family:var(--display);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:18px;
+}
+
+.kicker::before,
+.kicker::after{
+    content:"";
+    width:52px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--cyan));
+}
+
+.kicker::after{
+    background:linear-gradient(90deg,var(--cyan),transparent);
+}
+
+.section-title{
+    text-align:center;
+    font-size:clamp(30px,4.4vw,50px);
+    line-height:1.15;
+    margin-bottom:20px;
+}
+
+.section-desc{
+    text-align:center;
+    color:var(--muted);
+    max-width:760px;
+    margin:0 auto 64px;
+    font-size:16px;
+}
+
+/* HUD corner brackets */
+.hud{
+    position:relative;
+}
+
+.hud::before,
+.hud::after{
+    content:"";
+    position:absolute;
+    width:16px;
+    height:16px;
+    border:1px solid rgba(34,211,238,0.55);
+    opacity:0;
+    transition:opacity 0.35s;
+    pointer-events:none;
+}
+
+.hud::before{
+    top:10px;
+    left:10px;
+    border-right:0;
+    border-bottom:0;
+}
+
+.hud::after{
+    bottom:10px;
+    right:10px;
+    border-left:0;
+    border-top:0;
+}
+
+.hud:hover::before,
+.hud:hover::after{
+    opacity:1;
+}
+
+/* ---------------------------------------------------------------
+   NAV
+---------------------------------------------------------------- */
+.nav{
+    position:sticky;
+    top:0;
+    z-index:60;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    background:rgba(5,7,15,0.6);
+    border-bottom:1px solid transparent;
+    transition:background 0.35s,border-color 0.35s,box-shadow 0.35s;
+}
+
+.nav.scrolled{
+    background:rgba(5,7,15,0.88);
+    border-bottom-color:rgba(34,211,238,0.16);
+    box-shadow:0 10px 40px rgba(0,0,0,0.45);
+}
+
+.nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:16px 0;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--text);
+}
+
+.brand-mark{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    font-family:var(--display);
+    font-size:14px;
+    font-weight:900;
+    color:#02121a;
+    background:linear-gradient(135deg,var(--cyan),var(--violet));
+    box-shadow:0 0 22px rgba(34,211,238,0.45);
+}
+
+.brand-text{
+    font-family:var(--display);
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.brand-text small{
+    display:block;
+    font-family:var(--body);
+    font-size:11px;
+    letter-spacing:1.5px;
+    color:var(--muted);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    position:relative;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    transition:color 0.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:var(--cyan);
+    box-shadow:0 0 10px var(--cyan);
+    transition:width 0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--text);
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-cta{
+    padding:11px 22px;
+    border-radius:10px;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#02121a;
+    font-weight:700;
+    background:linear-gradient(135deg,var(--cyan),#4ff0ff);
+    box-shadow:0 0 24px rgba(34,211,238,0.35);
+    transition:transform 0.3s,box-shadow 0.3s;
+}
+
+.nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 36px rgba(34,211,238,0.6);
+}
+
+/* ---------------------------------------------------------------
+   HERO
+---------------------------------------------------------------- */
 .hero{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:50px;
+    justify-content:space-between;
+    gap:60px;
     flex-wrap:wrap;
+    padding-top:70px;
 }
 
 .hero-text{
@@ -51,170 +352,426 @@ h1,h2,h3{
 }
 
 .badge{
-    display:inline-block;
-    background:rgba(34,211,238,0.1);
-    color:#22d3ee;
-    padding:10px 18px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(34,211,238,0.08);
+    color:var(--cyan-soft);
+    padding:9px 18px;
     border-radius:30px;
-    border:1px solid rgba(34,211,238,0.3);
-    margin-bottom:25px;
+    border:1px solid rgba(34,211,238,0.28);
+    margin-bottom:28px;
+    font-size:13px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+}
+
+.pulse{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 0 0 rgba(34,211,238,0.7);
+    animation:pulse 2.2s infinite;
+}
+
+@keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(34,211,238,0.6); }
+    70%{ box-shadow:0 0 0 12px rgba(34,211,238,0); }
+    100%{ box-shadow:0 0 0 0 rgba(34,211,238,0); }
 }
 
 .hero h1{
-    font-size:65px;
-    margin-bottom:20px;
-    line-height:1.1;
+    font-size:clamp(40px,6.4vw,74px);
+    font-weight:900;
+    line-height:1.04;
+    margin-bottom:22px;
+    text-shadow:0 0 60px rgba(34,211,238,0.18);
 }
 
-.hero h2{
-    font-size:28px;
+.hero-role{
+    font-family:var(--body);
+    font-size:clamp(15px,1.9vw,19px);
+    font-weight:400;
     color:#cbd5e1;
-    margin-bottom:25px;
+    margin-bottom:24px;
+    letter-spacing:0.4px;
+}
+
+.hero-role span{
+    color:var(--cyan);
 }
 
 .hero p{
-    color:#94a3b8;
-    margin-bottom:35px;
-    font-size:18px;
+    color:var(--muted);
+    margin-bottom:38px;
+    font-size:16.5px;
+    max-width:640px;
 }
 
-.buttons a{
-    display:inline-block;
-    padding:14px 28px;
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
     text-decoration:none;
     border-radius:12px;
-    margin-right:15px;
-    font-weight:bold;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s,background 0.3s;
 }
 
 .btn-primary{
-    background:#22d3ee;
-    color:#000;
+    background:linear-gradient(135deg,var(--cyan),#4ff0ff);
+    color:#02121a;
+    box-shadow:0 0 30px rgba(34,211,238,0.35);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 45px rgba(34,211,238,0.65);
 }
 
 .btn-secondary{
-    border:1px solid #475569;
-    color:#fff;
+    border:1px solid rgba(34,211,238,0.35);
+    color:var(--text);
+    background:rgba(34,211,238,0.05);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-3px);
+    border-color:var(--cyan);
+    box-shadow:0 0 30px rgba(34,211,238,0.28);
+}
+
+/* hero portrait with rotating ring */
+.hero-image{
+    position:relative;
+    width:400px;
+    max-width:100%;
+    aspect-ratio:1/1;
+    display:grid;
+    place-items:center;
+}
+
+.hero-image::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0deg,var(--cyan) 70deg,transparent 150deg,var(--violet) 240deg,transparent 320deg);
+    animation:spin 9s linear infinite;
+    opacity:0.85;
+}
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border-radius:50%;
+    background:var(--bg);
+}
+
+@keyframes spin{
+    to{ transform:rotate(360deg); }
 }
 
 .hero-image img{
-    width:420px;
-    max-width:100%;
-    border-radius:30px;
-    border:3px solid rgba(34,211,238,0.3);
-    box-shadow:0 0 40px rgba(34,211,238,0.25);
+    position:relative;
+    z-index:1;
+    width:calc(100% - 44px);
+    height:calc(100% - 44px);
+    object-fit:cover;
+    border-radius:50%;
+    border:1px solid rgba(34,211,238,0.35);
+    box-shadow:0 0 60px rgba(34,211,238,0.25);
 }
 
-.section-title{
-    text-align:center;
-    font-size:48px;
-    margin-bottom:20px;
+.float-pill{
+    position:absolute;
+    z-index:2;
+    bottom:16px;
+    left:-10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    border-radius:14px;
+    background:rgba(9,14,26,0.9);
+    border:1px solid rgba(34,211,238,0.28);
+    backdrop-filter:blur(10px);
+    box-shadow:0 12px 40px rgba(0,0,0,0.5);
+    animation:float 5s ease-in-out infinite;
 }
 
-.section-desc{
-    text-align:center;
-    color:#94a3b8;
-    max-width:800px;
-    margin:0 auto 60px;
+.float-pill b{
+    font-family:var(--display);
+    color:var(--cyan);
+    font-size:18px;
 }
 
-.stats{
-    background:#0d1728;
+.float-pill small{
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    display:block;
+    line-height:1.3;
 }
 
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-12px); }
+}
+
+/* ---------------------------------------------------------------
+   CARDS / GRIDS
+---------------------------------------------------------------- */
 .stats-grid,
 .services-grid,
 .projects-grid,
 .skills-grid{
     display:grid;
-    gap:25px;
+    gap:24px;
 }
 
 .stats-grid{
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 }
 
 .services-grid,
 .projects-grid{
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
 }
 
 .skills-grid{
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+    gap:16px;
 }
 
 .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    padding:30px;
-    border-radius:24px;
+    position:relative;
+    background:var(--glass);
+    border:1px solid var(--line);
+    padding:34px 30px;
+    border-radius:20px;
+    backdrop-filter:blur(8px);
+    overflow:hidden;
+    transition:transform 0.35s,border-color 0.35s,box-shadow 0.35s;
+}
+
+.card > *{
+    position:relative;
+    z-index:1;
+}
+
+/* top scan line reveal */
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+    transform:scaleX(0);
+    transition:transform 0.45s;
+    z-index:2;
 }
 
 .card:hover{
+    transform:translateY(-8px);
     border-color:rgba(34,211,238,0.4);
+    box-shadow:0 20px 50px rgba(0,0,0,0.45),0 0 40px rgba(34,211,238,0.12);
+}
+
+.card:hover::before{
+    transform:scaleX(1);
+}
+
+.stat-card{
+    text-align:center;
 }
 
 .stat-number{
-    color:#22d3ee;
-    font-size:42px;
-    font-weight:bold;
-    margin-bottom:10px;
+    font-size:clamp(34px,4vw,46px);
+    font-weight:900;
+    background:linear-gradient(100deg,var(--cyan),var(--cyan-soft));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 22px rgba(34,211,238,0.35));
+    line-height:1.1;
+    margin-bottom:8px;
+}
+
+.stat-card p{
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .card h3{
-    margin-bottom:18px;
-    font-size:28px;
+    margin-bottom:14px;
+    font-size:20px;
+    letter-spacing:1px;
 }
 
 .card p{
-    color:#94a3b8;
+    color:var(--muted);
+    font-size:15px;
 }
 
-.experience{
-    background:#0d1728;
+.icon-box{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    margin-bottom:22px;
+    background:rgba(34,211,238,0.09);
+    border:1px solid rgba(34,211,238,0.28);
+    color:var(--cyan);
+    transition:box-shadow 0.35s,transform 0.35s;
 }
 
-.experience-item{
-    margin-bottom:25px;
+.card:hover .icon-box{
+    box-shadow:0 0 26px rgba(34,211,238,0.4);
+    transform:translateY(-2px);
 }
 
-.experience-item h3{
-    color:#22d3ee;
+.icon-box svg{
+    width:24px;
+    height:24px;
 }
 
+/* ---------------------------------------------------------------
+   EXPERIENCE TIMELINE
+---------------------------------------------------------------- */
+.timeline{
+    position:relative;
+    max-width:860px;
+    margin:auto;
+    padding-left:38px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:linear-gradient(180deg,transparent,var(--cyan),var(--violet),transparent);
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:26px;
+}
+
+.timeline-item:last-child{
+    margin-bottom:0;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-34px;
+    top:38px;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 0 4px rgba(34,211,238,0.15),0 0 18px rgba(34,211,238,0.8);
+}
+
+.timeline-item h3{
+    color:var(--cyan);
+    font-size:19px;
+    margin-bottom:4px;
+}
+
+.role{
+    font-family:var(--body);
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#cbd5e1;
+    margin-bottom:12px;
+}
+
+/* ---------------------------------------------------------------
+   CAMPAIGN RESULTS
+---------------------------------------------------------------- */
 .project-result{
-    background:rgba(34,211,238,0.1);
-    color:#67e8f9;
-    padding:18px;
-    border-radius:16px;
-    margin-bottom:20px;
-    font-weight:bold;
+    background:linear-gradient(120deg,rgba(34,211,238,0.12),rgba(168,85,247,0.08));
+    border:1px solid rgba(34,211,238,0.22);
+    color:var(--cyan-soft);
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:18px;
+    font-weight:500;
+    font-size:14.5px;
+}
+
+/* --- futuristic slider --- */
+.slider-wrap{
+    margin-top:64px;
 }
 
 .slider{
     position:relative;
-    margin-top:60px;
-    border-radius:28px;
-    padding:2px;
-    background:linear-gradient(135deg,rgba(34,211,238,0.5),rgba(59,130,246,0.15),rgba(34,211,238,0.5));
-    box-shadow:0 0 60px rgba(34,211,238,0.15);
+    padding:1px;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55),0 0 70px rgba(34,211,238,0.12);
+}
+
+/* animated conic border */
+.slider::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:180%;
+    aspect-ratio:1/1;
+    transform:translate(-50%,-50%);
+    background:conic-gradient(from 0deg,rgba(34,211,238,0) 0deg,var(--cyan) 60deg,rgba(34,211,238,0) 130deg,var(--violet) 230deg,rgba(34,211,238,0) 300deg);
+    animation:spin 7s linear infinite;
 }
 
 .slider-inner{
     position:relative;
-    border-radius:26px;
+    z-index:1;
+    border-radius:23px;
     overflow:hidden;
-    background:#0d1728;
+    background:var(--panel);
+}
+
+.slider-viewport{
+    overflow:hidden;
 }
 
 .slider-track{
     display:flex;
-    transition:transform 0.6s cubic-bezier(0.65,0,0.35,1);
+    transition:transform 0.7s cubic-bezier(0.65,0,0.35,1);
 }
 
 .slide{
     position:relative;
     min-width:100%;
+    overflow:hidden;
 }
 
 .slide img{
@@ -222,144 +779,351 @@ h1,h2,h3{
     display:block;
     aspect-ratio:16/9;
     object-fit:cover;
+    background:var(--panel);
 }
 
-.slide-caption{
+/* HUD corners over the frame */
+.hud-corner{
     position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:30px 35px;
-    background:linear-gradient(to top,rgba(2,6,15,0.95),rgba(2,6,15,0.4) 70%,transparent);
-    backdrop-filter:blur(2px);
+    width:26px;
+    height:26px;
+    border:2px solid rgba(34,211,238,0.7);
+    z-index:3;
+    pointer-events:none;
 }
 
-.slide-caption span{
-    display:inline-block;
-    color:#22d3ee;
-    font-size:12px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    border:1px solid rgba(34,211,238,0.4);
-    padding:4px 12px;
-    border-radius:20px;
-    margin-bottom:12px;
-}
-
-.slide-caption h4{
-    font-size:24px;
-    margin-bottom:8px;
-}
-
-.slide-caption p{
-    color:#94a3b8;
-    font-size:15px;
-}
+.hud-corner.tl{ top:14px; left:14px; border-right:0; border-bottom:0; border-radius:6px 0 0 0; }
+.hud-corner.tr{ top:14px; right:14px; border-left:0; border-bottom:0; border-radius:0 6px 0 0; }
+.hud-corner.bl{ bottom:14px; left:14px; border-right:0; border-top:0; border-radius:0 0 0 6px; }
+.hud-corner.br{ bottom:14px; right:14px; border-left:0; border-top:0; border-radius:0 0 6px 0; }
 
 .slider-arrow{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:48px;
-    height:48px;
+    width:50px;
+    height:50px;
     border-radius:50%;
     border:1px solid rgba(34,211,238,0.4);
-    background:rgba(8,17,32,0.7);
-    backdrop-filter:blur(6px);
-    color:#22d3ee;
-    font-size:18px;
+    background:rgba(5,7,15,0.66);
+    backdrop-filter:blur(8px);
+    color:var(--cyan);
     cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:2;
-    transition:box-shadow 0.3s,background 0.3s;
+    display:grid;
+    place-items:center;
+    z-index:4;
+    transition:background 0.3s,box-shadow 0.3s,transform 0.3s;
+}
+
+.slider-arrow svg{
+    width:20px;
+    height:20px;
 }
 
 .slider-arrow:hover{
-    background:rgba(34,211,238,0.15);
-    box-shadow:0 0 25px rgba(34,211,238,0.5);
+    background:rgba(34,211,238,0.16);
+    box-shadow:0 0 28px rgba(34,211,238,0.55);
 }
 
-.slider-arrow.prev{ left:20px; }
-.slider-arrow.next{ right:20px; }
+.slider-arrow.prev{ left:18px; }
+.slider-arrow.next{ right:18px; }
 
-.slider-dots{
-    position:absolute;
-    bottom:22px;
-    right:30px;
+.slider-arrow.prev:hover{ transform:translateY(-50%) translateX(-3px); }
+.slider-arrow.next:hover{ transform:translateY(-50%) translateX(3px); }
+
+/* progress + counter bar */
+.slider-bar{
     display:flex;
-    gap:10px;
-    z-index:2;
+    align-items:center;
+    gap:18px;
+    padding:16px 22px;
+    border-top:1px solid rgba(34,211,238,0.14);
+    background:rgba(5,7,15,0.6);
 }
 
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.25);
-    border:1px solid rgba(34,211,238,0.4);
-    cursor:pointer;
-    transition:all 0.3s;
+.slider-count{
+    font-size:13px;
+    letter-spacing:2px;
+    color:var(--cyan);
+    white-space:nowrap;
 }
 
-.dot.active{
-    background:#22d3ee;
+.slider-count b{
+    color:var(--text);
+}
+
+.progress{
+    flex:1;
+    height:2px;
+    background:rgba(255,255,255,0.1);
+    border-radius:2px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--cyan),var(--violet));
     box-shadow:0 0 12px rgba(34,211,238,0.8);
-    width:26px;
-    border-radius:6px;
 }
 
-@media(max-width:600px){
-.slide-caption h4{ font-size:19px; }
-.slider-arrow{ width:38px; height:38px; font-size:15px; }
+.progress span.run{
+    animation:fill var(--dur,5s) linear forwards;
 }
 
+@keyframes fill{
+    from{ width:0; }
+    to{ width:100%; }
+}
+
+.autoplay-state{
+    font-size:11px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--muted);
+    white-space:nowrap;
+}
+
+/* thumbnail rail */
+.thumbs{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+    padding:4px;
+    overflow-x:auto;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(34,211,238,0.4) transparent;
+}
+
+.thumbs::-webkit-scrollbar{
+    height:5px;
+}
+
+.thumbs::-webkit-scrollbar-thumb{
+    background:rgba(34,211,238,0.4);
+    border-radius:4px;
+}
+
+.thumb{
+    flex:0 0 116px;
+    padding:0;
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:none;
+    cursor:pointer;
+    opacity:0.42;
+    transition:opacity 0.3s,border-color 0.3s,box-shadow 0.3s,transform 0.3s;
+}
+
+.thumb img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+}
+
+.thumb:hover{
+    opacity:0.85;
+    transform:translateY(-3px);
+}
+
+.thumb.active{
+    opacity:1;
+    border-color:var(--cyan);
+    box-shadow:0 0 20px rgba(34,211,238,0.45);
+}
+
+/* ---------------------------------------------------------------
+   SKILLS
+---------------------------------------------------------------- */
 .skill{
+    position:relative;
     text-align:center;
-    padding:18px;
-    border-radius:16px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
+    padding:16px 14px;
+    border-radius:14px;
+    background:var(--glass);
+    border:1px solid var(--line);
+    font-size:14px;
+    letter-spacing:0.8px;
+    overflow:hidden;
+    transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s,color 0.3s;
 }
 
+.skill::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent 20%,rgba(34,211,238,0.22),transparent 80%);
+    transform:translateX(-120%);
+    transition:transform 0.6s;
+}
+
+.skill:hover{
+    transform:translateY(-5px);
+    border-color:rgba(34,211,238,0.45);
+    box-shadow:0 0 26px rgba(34,211,238,0.18);
+    color:var(--cyan-soft);
+}
+
+.skill:hover::after{
+    transform:translateX(120%);
+}
+
+/* ---------------------------------------------------------------
+   CONTACT + FOOTER
+---------------------------------------------------------------- */
 .contact-box{
-    background:linear-gradient(to right,rgba(34,211,238,0.1),rgba(59,130,246,0.1));
-    border:1px solid rgba(34,211,238,0.2);
-    padding:60px;
-    border-radius:35px;
+    position:relative;
+    background:
+        radial-gradient(600px 240px at 50% 0%,rgba(34,211,238,0.14),transparent 70%),
+        linear-gradient(140deg,rgba(34,211,238,0.07),rgba(168,85,247,0.07));
+    border:1px solid rgba(34,211,238,0.24);
+    padding:70px 50px;
+    border-radius:28px;
     text-align:center;
+    overflow:hidden;
 }
 
-.contact-info div{
-    margin-top:15px;
-    font-size:20px;
-    color:#cbd5e1;
+.contact-box .section-desc{
+    margin-bottom:38px;
+}
+
+.contact-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+}
+
+.contact-info a{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 26px;
+    border-radius:14px;
+    text-decoration:none;
+    color:var(--text);
+    font-size:15.5px;
+    background:rgba(5,7,15,0.55);
+    border:1px solid rgba(34,211,238,0.22);
+    transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+}
+
+.contact-info a:hover{
+    transform:translateY(-4px);
+    border-color:var(--cyan);
+    box-shadow:0 0 30px rgba(34,211,238,0.3);
+}
+
+.contact-info svg{
+    width:18px;
+    height:18px;
+    color:var(--cyan);
 }
 
 footer{
     text-align:center;
-    padding:30px;
-    border-top:1px solid rgba(255,255,255,0.1);
-    color:#94a3b8;
+    padding:36px 0;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:14px;
 }
 
-@media(max-width:768px){
-
-.hero h1{
-    font-size:42px;
+/* ---------------------------------------------------------------
+   SCROLL REVEAL
+---------------------------------------------------------------- */
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 0.7s ease,transform 0.7s ease;
+    transition-delay:var(--d,0s);
 }
 
-.hero h2{
-    font-size:22px;
+.reveal.visible{
+    opacity:1;
+    transform:none;
 }
 
-.section-title{
-    font-size:36px;
+/* ---------------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------------- */
+@media(max-width:900px){
+
+.nav-links{
+    display:none;
+}
+
+section{
+    padding:80px 0;
+}
+
+.hero{
+    padding-top:40px;
+    gap:40px;
+}
+
+.hero-image{
+    width:320px;
+    margin:auto;
+}
+
+}
+
+@media(max-width:600px){
+
+.slider-arrow{
+    width:40px;
+    height:40px;
+}
+
+.slider-arrow.prev{ left:10px; }
+.slider-arrow.next{ right:10px; }
+
+.hud-corner{
+    width:18px;
+    height:18px;
 }
 
 .contact-box{
-    padding:35px 25px;
+    padding:44px 22px;
+}
+
+.slider-bar{
+    padding:14px 16px;
+    gap:12px;
+}
+
+.autoplay-state{
+    display:none;
+}
+
+.timeline{
+    padding-left:30px;
+}
+
+.card{
+    padding:28px 22px;
+}
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+*,*::before,*::after{
+    animation-duration:0.001s !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001s !important;
+}
+
+html{
+    scroll-behavior:auto;
+}
+
+.reveal{
+    opacity:1;
+    transform:none;
 }
 
 }
@@ -368,58 +1132,94 @@ footer{
 
 <body>
 
-<section>
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav" id="nav">
+<div class="container nav-inner">
+
+<a href="#top" class="brand">
+<span class="brand-mark">AK</span>
+<span class="brand-text">
+Amir Khan
+<small>Performance Marketer</small>
+</span>
+</a>
+
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Results</a></li>
+<li><a href="#skills">Skills</a></li>
+</ul>
+
+<a href="#contact" class="nav-cta">Let's Talk</a>
+
+</div>
+</header>
+
+<!-- ============================= HERO ============================= -->
+<section id="top">
 <div class="container hero">
 
-<div class="hero-text">
+<div class="hero-text reveal">
 
 <div class="badge">
-Lead Generation & eCommerce Growth Expert
+<span class="pulse"></span>
+Lead Generation &amp; eCommerce Growth Expert
 </div>
 
 <h1>
 Mohammad <span class="highlight">Amir Khan</span>
 </h1>
 
-<h2>
-Digital Marketing Specialist | Paid Media Buyer | Conversion Tracking Expert | Content Strategist
-</h2>
+<p class="hero-role">
+Digital Marketing Specialist <span>/</span> Paid Media Buyer <span>/</span> Conversion Tracking Expert <span>/</span> Content Strategist
+</p>
 
 <p>
-I help businesses generate qualified leads and increase online sales through data-driven advertising strategies, advanced conversion tracking, and high-performing paid media campaigns across Meta, Google, and TikTok Ads. With 5+ years of experience and work across 250+ businesses globally, I focus on scaling revenue, improving ROAS, and generating measurable business growth.
+I help businesses generate qualified leads and increase online sales through data-driven advertising strategies, advanced conversion tracking, and high-performing paid media campaigns across Meta, Google, and TikTok Ads. With 3+ years of experience and work across 250+ businesses globally, I focus on scaling revenue, improving ROAS, and generating measurable business growth.
 </p>
 
 <div class="buttons">
-<a href="mailto:amirkhan280495@gmail.com" class="btn-primary">Schedule a Call</a>
-<a href="#projects" class="btn-secondary">View Case Studies</a>
+<a href="mailto:amirkhan280495@gmail.com" class="btn btn-primary">Schedule a Call</a>
+<a href="#projects" class="btn btn-secondary">View Case Studies</a>
 </div>
 
 </div>
 
-<div class="hero-image">
+<div class="hero-image reveal" style="--d:0.15s">
 <img src="Amir_Khan_Digital_Marketer_Meta_Ads_google_ads.jpeg" alt="Mohammad Amir Khan">
+<div class="float-pill">
+<b>$400K+</b>
+<small>Ad Spend<br>Managed</small>
+</div>
 </div>
 
 </div>
 </section>
 
-<section class="stats">
+<!-- ============================= STATS ============================= -->
+<section style="padding-top:0">
 <div class="container">
 
 <div class="stats-grid">
 
-<div class="card">
-<div class="stat-number">3+</div>
+<div class="card stat-card hud reveal">
+<div class="stat-number" data-count="3" data-suffix="+">0+</div>
 <p>Years Experience</p>
 </div>
 
-<div class="card">
-<div class="stat-number">250+</div>
+<div class="card stat-card hud reveal" style="--d:0.1s">
+<div class="stat-number" data-count="250" data-suffix="+">0+</div>
 <p>Businesses Worked With</p>
 </div>
 
-<div class="card">
-<div class="stat-number">$400K+</div>
+<div class="card stat-card hud reveal" style="--d:0.2s">
+<div class="stat-number" data-prefix="$" data-count="400" data-suffix="K+">$0K+</div>
 <p>Managed Ad Spend</p>
 </div>
 
@@ -428,45 +1228,66 @@ I help businesses generate qualified leads and increase online sales through dat
 </div>
 </section>
 
-<section>
+<!-- ============================= SERVICES ============================= -->
+<section id="services">
 <div class="container">
 
-<h2 class="section-title">
+<p class="kicker reveal">01 &mdash; Capabilities</p>
+
+<h2 class="section-title reveal">
 My <span class="highlight">Services</span>
 </h2>
 
-<p class="section-desc">
+<p class="section-desc reveal">
 Full-funnel paid advertising, eCommerce scaling, and advanced conversion tracking solutions designed to grow modern businesses efficiently.
 </p>
 
 <div class="services-grid">
 
-<div class="card">
+<div class="card hud reveal">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+</div>
 <h3>Meta Ads</h3>
 <p>Lead generation, online sales growth, eCommerce scaling, retargeting campaigns, and high-converting funnel strategy.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.08s">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+</div>
 <h3>Google Ads</h3>
 <p>Search, Display, Shopping, YouTube, and Performance Max campaign optimization focused on ROAS and sales growth.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.16s">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V7a4 4 0 004 4"/><circle cx="6.5" cy="17.5" r="2.5"/></svg>
+</div>
 <h3>TikTok Ads</h3>
 <p>Creative-first TikTok advertising strategy designed to generate profitable online sales and qualified leads.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/><path d="M6 6L5 3H3"/></svg>
+</div>
 <h3>eCommerce Growth</h3>
 <p>Scaling Shopify and eCommerce brands through paid advertising, conversion optimization, and remarketing campaigns.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.08s">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+</div>
 <h3>Conversion Tracking</h3>
 <p>Advanced GTM, GA4, Meta Pixel, Conversion API, and server-side tracking implementation for accurate data tracking.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.16s">
+<div class="icon-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v13l-4 4H5z"/><path d="M9 9h6M9 13h4"/></svg>
+</div>
 <h3>Content Strategy</h3>
 <p>High-performing content and ad creative strategy built for engagement, lead generation, and product sales.</p>
 </div>
@@ -476,56 +1297,70 @@ Full-funnel paid advertising, eCommerce scaling, and advanced conversion trackin
 </div>
 </section>
 
-<section class="experience">
+<!-- ============================= EXPERIENCE ============================= -->
+<section id="experience">
 <div class="container">
 
-<h2 class="section-title">
+<p class="kicker reveal">02 &mdash; Track Record</p>
+
+<h2 class="section-title reveal">
 Work <span class="highlight">Experience</span>
 </h2>
 
-<div class="experience-item card">
+<p class="section-desc reveal">
+Three years of hands-on paid media execution across agencies, international brands, and local businesses.
+</p>
+
+<div class="timeline">
+
+<div class="timeline-item card hud reveal">
 <h3>Softvance Agency</h3>
-<h4>Team Leader – Paid Media</h4>
+<p class="role">Team Leader &mdash; Paid Media</p>
 <p>Led paid advertising campaigns, optimized conversion funnels, and managed growth strategies for international businesses.</p>
 </div>
 
-<div class="experience-item card">
+<div class="timeline-item card hud reveal" style="--d:0.1s">
 <h3>Oyolloo</h3>
-<h4>Digital Marketing Specialist</h4>
+<p class="role">Digital Marketing Specialist</p>
 <p>Handled Meta Ads, Google Ads, conversion tracking, and campaign optimization for multiple business niches.</p>
 </div>
 
-<div class="experience-item card">
+<div class="timeline-item card hud reveal" style="--d:0.2s">
 <h3>UddogtaBD</h3>
-<h4>Performance Marketer</h4>
+<p class="role">Performance Marketer</p>
 <p>Managed lead generation and sales campaigns focused on customer acquisition and ROAS growth.</p>
+</div>
+
 </div>
 
 </div>
 </section>
 
+<!-- ============================= CAMPAIGN RESULTS ============================= -->
 <section id="projects">
 <div class="container">
 
-<h2 class="section-title">
+<p class="kicker reveal">03 &mdash; Proven Performance</p>
+
+<h2 class="section-title reveal">
 Campaign <span class="highlight">Results</span>
 </h2>
 
-<p class="section-desc">
+<p class="section-desc reveal">
 Real campaign performance metrics focused on lead generation, online sales growth, and conversion tracking optimization.
 </p>
 
 <div class="projects-grid">
 
-<div class="card">
+<div class="card hud reveal">
 <h3>Lead Generation Campaign</h3>
 <div class="project-result">
-Generated high-quality leads through data-driven Google & Meta advertising and strategic campaign optimization.
+Generated 3,093+ Meta leads while managing $40K+ in ad spend.
 </div>
 <p>Built and optimized lead generation campaigns with advanced audience targeting and funnel optimization.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.1s">
 <h3>eCommerce Sales Scaling</h3>
 <div class="project-result">
 Scaled eCommerce brands using Meta, Google, and TikTok advertising.
@@ -533,7 +1368,7 @@ Scaled eCommerce brands using Meta, Google, and TikTok advertising.
 <p>Focused on increasing product sales, improving ROAS, dynamic retargeting, and conversion optimization.</p>
 </div>
 
-<div class="card">
+<div class="card hud reveal" style="--d:0.2s">
 <h3>Advanced Tracking Setup</h3>
 <div class="project-result">
 Implemented server-side tracking and accurate analytics reporting.
@@ -543,63 +1378,86 @@ Implemented server-side tracking and accurate analytics reporting.
 
 </div>
 
-<div class="slider" id="results-slider">
+<!-- image slider -->
+<div class="slider-wrap reveal">
+
+<div class="slider" id="results-slider" tabindex="0" aria-label="Campaign results image slider">
 <div class="slider-inner">
 
+<div class="slider-viewport">
 <div class="slider-track">
-
-<div class="slide active">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23113049'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g1)'/%3E%3Cg stroke='%2322d3ee' stroke-width='2' opacity='0.35'%3E%3Cline x1='0' y1='90' x2='800' y2='90'/%3E%3Cline x1='0' y1='210' x2='800' y2='210'/%3E%3Cline x1='0' y1='330' x2='800' y2='330'/%3E%3C/g%3E%3Cpolyline points='60,340 200,300 320,250 440,270 560,180 680,120 740,90' fill='none' stroke='%2322d3ee' stroke-width='5'/%3E%3Ccircle cx='740' cy='90' r='9' fill='%2322d3ee'/%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3ELead Generation%3C/text%3E%3C/svg%3E" alt="Lead Generation Campaign placeholder graphic">
-<div class="slide-caption">
-<span>Meta Ads</span>
-<h4>Lead Generation Campaign</h4>
-<p>3,093+ Meta leads generated on $40K+ ad spend.</p>
+<div class="slide"><img src="campaign_updated_image/campaign-table.jpg" alt="Campaign results table" width="1200" height="675"></div>
+<div class="slide"><img src="campaign_updated_image/performance-overview.jpg" alt="Performance overview dashboard" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/baskin-1.jpg" alt="Baskin campaign result 1" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/baskin-2.jpg" alt="Baskin campaign result 2" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/baskin-3.jpg" alt="Baskin campaign result 3" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/clearncollect-1.jpg" alt="Clear N Collect campaign result 1" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/clearncollect-2.jpg" alt="Clear N Collect campaign result 2" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/clearncollect-3.jpg" alt="Clear N Collect campaign result 3" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/manuscriptshop-1.jpg" alt="Manuscript Shop campaign result 1" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/manuscriptshop-2.jpg" alt="Manuscript Shop campaign result 2" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/whatsapp-1.jpg" alt="Campaign result screenshot 1" width="1200" height="675" loading="lazy"></div>
+<div class="slide"><img src="campaign_updated_image/whatsapp-2.jpg" alt="Campaign result screenshot 2" width="1200" height="675" loading="lazy"></div>
 </div>
 </div>
 
-<div class="slide">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2510263f'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g2)'/%3E%3Cg fill='%2322d3ee' opacity='0.85'%3E%3Crect x='100' y='260' width='70' height='120' rx='8'/%3E%3Crect x='220' y='210' width='70' height='170' rx='8'/%3E%3Crect x='340' y='150' width='70' height='230' rx='8'/%3E%3Crect x='460' y='190' width='70' height='190' rx='8'/%3E%3Crect x='580' y='110' width='70' height='270' rx='8'/%3E%3C/g%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3EeCommerce Growth%3C/text%3E%3C/svg%3E" alt="eCommerce Sales Scaling placeholder graphic">
-<div class="slide-caption">
-<span>Meta &middot; Google &middot; TikTok</span>
-<h4>eCommerce Sales Scaling</h4>
-<p>Improved ROAS with dynamic retargeting and conversion optimization.</p>
-</div>
-</div>
+<span class="hud-corner tl"></span>
+<span class="hud-corner tr"></span>
+<span class="hud-corner bl"></span>
+<span class="hud-corner br"></span>
 
-<div class="slide">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23132a3f'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g3)'/%3E%3Cg stroke='%2322d3ee' stroke-width='2' fill='none' opacity='0.8'%3E%3Crect x='90' y='90' width='260' height='120' rx='14'/%3E%3Crect x='380' y='90' width='330' height='120' rx='14'/%3E%3Crect x='90' y='240' width='330' height='140' rx='14'/%3E%3Crect x='450' y='240' width='260' height='140' rx='14'/%3E%3C/g%3E%3Ccircle cx='220' cy='150' r='28' fill='%2322d3ee' opacity='0.6'/%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3ETracking Setup%3C/text%3E%3C/svg%3E" alt="Advanced Tracking Setup placeholder graphic">
-<div class="slide-caption">
-<span>GTM &middot; GA4 &middot; CAPI</span>
-<h4>Advanced Tracking Setup</h4>
-<p>Server-side tracking configured for accurate attribution.</p>
-</div>
-</div>
+<button class="slider-arrow prev" aria-label="Previous slide">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+</button>
 
-</div>
+<button class="slider-arrow next" aria-label="Next slide">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+</button>
 
-<button class="slider-arrow prev" aria-label="Previous slide">&#10094;</button>
-<button class="slider-arrow next" aria-label="Next slide">&#10095;</button>
-
-<div class="slider-dots">
-<span class="dot active" data-index="0"></span>
-<span class="dot" data-index="1"></span>
-<span class="dot" data-index="2"></span>
+<div class="slider-bar">
+<span class="slider-count"><b id="slide-current">01</b> / <span id="slide-total">12</span></span>
+<div class="progress"><span id="progress-fill"></span></div>
+<span class="autoplay-state" id="autoplay-state">Auto</span>
 </div>
 
 </div>
+</div>
+
+<div class="thumbs" id="thumbs">
+<button class="thumb active" data-index="0"><img src="campaign_updated_image/thumbs/campaign-table.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="1"><img src="campaign_updated_image/thumbs/performance-overview.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="2"><img src="campaign_updated_image/thumbs/baskin-1.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="3"><img src="campaign_updated_image/thumbs/baskin-2.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="4"><img src="campaign_updated_image/thumbs/baskin-3.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="5"><img src="campaign_updated_image/thumbs/clearncollect-1.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="6"><img src="campaign_updated_image/thumbs/clearncollect-2.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="7"><img src="campaign_updated_image/thumbs/clearncollect-3.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="8"><img src="campaign_updated_image/thumbs/manuscriptshop-1.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="9"><img src="campaign_updated_image/thumbs/manuscriptshop-2.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="10"><img src="campaign_updated_image/thumbs/whatsapp-1.jpg" alt="" loading="lazy"></button>
+<button class="thumb" data-index="11"><img src="campaign_updated_image/thumbs/whatsapp-2.jpg" alt="" loading="lazy"></button>
+</div>
+
 </div>
 
 </div>
 </section>
 
-<section class="stats">
+<!-- ============================= SKILLS ============================= -->
+<section id="skills">
 <div class="container">
 
-<h2 class="section-title">
+<p class="kicker reveal">04 &mdash; Toolset</p>
+
+<h2 class="section-title reveal">
 Technical <span class="highlight">Skills</span>
 </h2>
 
-<div class="skills-grid">
+<p class="section-desc reveal">
+The platforms, tracking stacks, and optimization disciplines I work with every day.
+</p>
+
+<div class="skills-grid reveal">
 
 <div class="skill">Meta Ads</div>
 <div class="skill">Google Ads</div>
@@ -619,13 +1477,16 @@ Technical <span class="highlight">Skills</span>
 </div>
 </section>
 
-<section>
+<!-- ============================= CONTACT ============================= -->
+<section id="contact">
 <div class="container">
 
-<div class="contact-box">
+<div class="contact-box reveal">
+
+<p class="kicker">05 &mdash; Get In Touch</p>
 
 <h2 class="section-title">
-Let's Scale Your Business
+Let's <span class="highlight">Scale</span> Your Business
 </h2>
 
 <p class="section-desc">
@@ -633,8 +1494,17 @@ Looking for a performance marketer who understands eCommerce growth, lead genera
 </p>
 
 <div class="contact-info">
-<div>📧 amirkhan280495@gmail.com</div>
-<div>📱 01305554599</div>
+
+<a href="mailto:amirkhan280495@gmail.com">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 7 9-7"/></svg>
+amirkhan280495@gmail.com
+</a>
+
+<a href="tel:+8801305554599">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a1 1 0 01-1 1A18 18 0 013 5a1 1 0 011-1z"/></svg>
+01305554599
+</a>
+
 </div>
 
 </div>
@@ -643,54 +1513,179 @@ Looking for a performance marketer who understands eCommerce growth, lead genera
 </section>
 
 <footer>
-© 2026 Mohammad Amir Khan | Digital Marketing Portfolio
+<div class="container">
+&copy; 2026 Mohammad Amir Khan &nbsp;|&nbsp; Digital Marketing Portfolio
+</div>
 </footer>
 
 <script>
 (function(){
-    var slider = document.getElementById('results-slider');
-    var track = slider.querySelector('.slider-track');
-    var slides = slider.querySelectorAll('.slide');
-    var dots = slider.querySelectorAll('.dot');
-    var prevBtn = slider.querySelector('.slider-arrow.prev');
-    var nextBtn = slider.querySelector('.slider-arrow.next');
-    var current = 0;
-    var timer;
 
-    function goTo(index){
-        current = (index + slides.length) % slides.length;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        dots.forEach(function(dot,i){
-            dot.classList.toggle('active', i === current);
+var AUTOPLAY_MS = 5000;
+
+/* ---------------- nav shadow on scroll ---------------- */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ---------------- scroll reveal ---------------- */
+var revealItems = document.querySelectorAll('.reveal');
+
+if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
         });
+    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+
+    revealItems.forEach(function(el){ revealObserver.observe(el); });
+} else {
+    revealItems.forEach(function(el){ el.classList.add('visible'); });
+}
+
+/* ---------------- animated stat counters ---------------- */
+var counters = document.querySelectorAll('[data-count]');
+
+function runCounter(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = performance.now();
+
+    function tick(now){
+        var p = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(target * eased) + suffix;
+        if(p < 1){ requestAnimationFrame(tick); }
     }
+    requestAnimationFrame(tick);
+}
 
-    function next(){ goTo(current + 1); }
-    function prev(){ goTo(current - 1); }
-
-    function startAutoplay(){
-        timer = setInterval(next, 4000);
-    }
-
-    function stopAutoplay(){
-        clearInterval(timer);
-    }
-
-    nextBtn.addEventListener('click', function(){ next(); stopAutoplay(); startAutoplay(); });
-    prevBtn.addEventListener('click', function(){ prev(); stopAutoplay(); startAutoplay(); });
-
-    dots.forEach(function(dot){
-        dot.addEventListener('click', function(){
-            goTo(parseInt(dot.getAttribute('data-index'), 10));
-            stopAutoplay();
-            startAutoplay();
+if('IntersectionObserver' in window){
+    var countObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                runCounter(entry.target);
+                countObserver.unobserve(entry.target);
+            }
         });
+    }, { threshold:0.5 });
+
+    counters.forEach(function(el){ countObserver.observe(el); });
+} else {
+    counters.forEach(runCounter);
+}
+
+/* ---------------- slider ---------------- */
+var slider = document.getElementById('results-slider');
+var track = slider.querySelector('.slider-track');
+var slides = slider.querySelectorAll('.slide');
+var thumbs = document.querySelectorAll('.thumb');
+var currentLabel = document.getElementById('slide-current');
+var totalLabel = document.getElementById('slide-total');
+var progressFill = document.getElementById('progress-fill');
+var autoplayState = document.getElementById('autoplay-state');
+var current = 0;
+var timer = null;
+
+totalLabel.textContent = pad(slides.length);
+
+function pad(n){
+    return (n < 10 ? '0' : '') + n;
+}
+
+function restartProgress(){
+    progressFill.classList.remove('run');
+    progressFill.style.setProperty('--dur', AUTOPLAY_MS + 'ms');
+    void progressFill.offsetWidth;   /* force reflow so the animation replays */
+    if(timer){ progressFill.classList.add('run'); }
+}
+
+function goTo(index){
+    current = (index + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    currentLabel.textContent = pad(current + 1);
+
+    thumbs.forEach(function(t, i){
+        t.classList.toggle('active', i === current);
     });
 
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', startAutoplay);
+    var activeThumb = thumbs[current];
+    if(activeThumb && activeThumb.scrollIntoView){
+        activeThumb.scrollIntoView({ behavior:'smooth', inline:'nearest', block:'nearest' });
+    }
 
+    restartProgress();
+}
+
+function next(){ goTo(current + 1); }
+function prev(){ goTo(current - 1); }
+
+function startAutoplay(){
+    if(timer){ return; }
+    timer = setInterval(next, AUTOPLAY_MS);
+    autoplayState.textContent = 'Auto';
+    restartProgress();
+}
+
+function stopAutoplay(){
+    clearInterval(timer);
+    timer = null;
+    progressFill.classList.remove('run');
+    autoplayState.textContent = 'Paused';
+}
+
+function userNav(fn){
+    fn();
+    if(timer){
+        clearInterval(timer);
+        timer = setInterval(next, AUTOPLAY_MS);
+        restartProgress();
+    }
+}
+
+slider.querySelector('.slider-arrow.next').addEventListener('click', function(){ userNav(next); });
+slider.querySelector('.slider-arrow.prev').addEventListener('click', function(){ userNav(prev); });
+
+thumbs.forEach(function(t){
+    t.addEventListener('click', function(){
+        userNav(function(){ goTo(parseInt(t.getAttribute('data-index'), 10)); });
+    });
+});
+
+slider.addEventListener('mouseenter', stopAutoplay);
+slider.addEventListener('mouseleave', startAutoplay);
+
+slider.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){ e.preventDefault(); userNav(next); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); userNav(prev); }
+});
+
+/* touch swipe */
+var touchX = null;
+
+slider.addEventListener('touchstart', function(e){
+    touchX = e.touches[0].clientX;
+    stopAutoplay();
+}, { passive:true });
+
+slider.addEventListener('touchend', function(e){
+    if(touchX === null){ return; }
+    var delta = e.changedTouches[0].clientX - touchX;
+    if(Math.abs(delta) > 45){
+        if(delta < 0){ next(); } else { prev(); }
+    }
+    touchX = null;
     startAutoplay();
+}, { passive:true });
+
+startAutoplay();
+
 })();
 </script>
 
