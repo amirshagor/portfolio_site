@@ -191,16 +191,128 @@ h1,h2,h3{
     font-weight:bold;
 }
 
-.screenshots{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-    gap:30px;
-    margin-top:50px;
+.slider{
+    position:relative;
+    margin-top:60px;
+    border-radius:28px;
+    padding:2px;
+    background:linear-gradient(135deg,rgba(34,211,238,0.5),rgba(59,130,246,0.15),rgba(34,211,238,0.5));
+    box-shadow:0 0 60px rgba(34,211,238,0.15);
 }
 
-.screenshots img{
+.slider-inner{
+    position:relative;
+    border-radius:26px;
+    overflow:hidden;
+    background:#0d1728;
+}
+
+.slider-track{
+    display:flex;
+    transition:transform 0.6s cubic-bezier(0.65,0,0.35,1);
+}
+
+.slide{
+    position:relative;
+    min-width:100%;
+}
+
+.slide img{
     width:100%;
+    display:block;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+
+.slide-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:30px 35px;
+    background:linear-gradient(to top,rgba(2,6,15,0.95),rgba(2,6,15,0.4) 70%,transparent);
+    backdrop-filter:blur(2px);
+}
+
+.slide-caption span{
+    display:inline-block;
+    color:#22d3ee;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border:1px solid rgba(34,211,238,0.4);
+    padding:4px 12px;
     border-radius:20px;
+    margin-bottom:12px;
+}
+
+.slide-caption h4{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.slide-caption p{
+    color:#94a3b8;
+    font-size:15px;
+}
+
+.slider-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid rgba(34,211,238,0.4);
+    background:rgba(8,17,32,0.7);
+    backdrop-filter:blur(6px);
+    color:#22d3ee;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    transition:box-shadow 0.3s,background 0.3s;
+}
+
+.slider-arrow:hover{
+    background:rgba(34,211,238,0.15);
+    box-shadow:0 0 25px rgba(34,211,238,0.5);
+}
+
+.slider-arrow.prev{ left:20px; }
+.slider-arrow.next{ right:20px; }
+
+.slider-dots{
+    position:absolute;
+    bottom:22px;
+    right:30px;
+    display:flex;
+    gap:10px;
+    z-index:2;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.25);
+    border:1px solid rgba(34,211,238,0.4);
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.dot.active{
+    background:#22d3ee;
+    box-shadow:0 0 12px rgba(34,211,238,0.8);
+    width:26px;
+    border-radius:6px;
+}
+
+@media(max-width:600px){
+.slide-caption h4{ font-size:19px; }
+.slider-arrow{ width:38px; height:38px; font-size:15px; }
 }
 
 .skill{
@@ -297,7 +409,7 @@ I help businesses generate qualified leads and increase online sales through dat
 <div class="stats-grid">
 
 <div class="card">
-<div class="stat-number">5+</div>
+<div class="stat-number">3+</div>
 <p>Years Experience</p>
 </div>
 
@@ -307,13 +419,8 @@ I help businesses generate qualified leads and increase online sales through dat
 </div>
 
 <div class="card">
-<div class="stat-number">$150K+</div>
+<div class="stat-number">$400K+</div>
 <p>Managed Ad Spend</p>
-</div>
-
-<div class="card">
-<div class="stat-number">3,093+</div>
-<p>Meta Leads Generated</p>
 </div>
 
 </div>
@@ -413,7 +520,7 @@ Real campaign performance metrics focused on lead generation, online sales growt
 <div class="card">
 <h3>Lead Generation Campaign</h3>
 <div class="project-result">
-Generated 3,093+ Meta leads while managing $40K+ in ad spend.
+Generated high-quality leads through data-driven Google & Meta advertising and strategic campaign optimization.
 </div>
 <p>Built and optimized lead generation campaigns with advanced audience targeting and funnel optimization.</p>
 </div>
@@ -436,9 +543,50 @@ Implemented server-side tracking and accurate analytics reporting.
 
 </div>
 
-<div class="screenshots">
-<img src="753dd6bf-702a-4e3a-8ee2-e8a4acf1bf5b.png" alt="Campaign Results">
-<img src="fcb88ef7-4cd7-46b4-a8ca-4ad46dbb8306.png" alt="Campaign Analytics">
+<div class="slider" id="results-slider">
+<div class="slider-inner">
+
+<div class="slider-track">
+
+<div class="slide active">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23113049'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g1)'/%3E%3Cg stroke='%2322d3ee' stroke-width='2' opacity='0.35'%3E%3Cline x1='0' y1='90' x2='800' y2='90'/%3E%3Cline x1='0' y1='210' x2='800' y2='210'/%3E%3Cline x1='0' y1='330' x2='800' y2='330'/%3E%3C/g%3E%3Cpolyline points='60,340 200,300 320,250 440,270 560,180 680,120 740,90' fill='none' stroke='%2322d3ee' stroke-width='5'/%3E%3Ccircle cx='740' cy='90' r='9' fill='%2322d3ee'/%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3ELead Generation%3C/text%3E%3C/svg%3E" alt="Lead Generation Campaign placeholder graphic">
+<div class="slide-caption">
+<span>Meta Ads</span>
+<h4>Lead Generation Campaign</h4>
+<p>3,093+ Meta leads generated on $40K+ ad spend.</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2510263f'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g2)'/%3E%3Cg fill='%2322d3ee' opacity='0.85'%3E%3Crect x='100' y='260' width='70' height='120' rx='8'/%3E%3Crect x='220' y='210' width='70' height='170' rx='8'/%3E%3Crect x='340' y='150' width='70' height='230' rx='8'/%3E%3Crect x='460' y='190' width='70' height='190' rx='8'/%3E%3Crect x='580' y='110' width='70' height='270' rx='8'/%3E%3C/g%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3EeCommerce Growth%3C/text%3E%3C/svg%3E" alt="eCommerce Sales Scaling placeholder graphic">
+<div class="slide-caption">
+<span>Meta &middot; Google &middot; TikTok</span>
+<h4>eCommerce Sales Scaling</h4>
+<p>Improved ROAS with dynamic retargeting and conversion optimization.</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23132a3f'/%3E%3Cstop offset='100%25' stop-color='%2308111f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g3)'/%3E%3Cg stroke='%2322d3ee' stroke-width='2' fill='none' opacity='0.8'%3E%3Crect x='90' y='90' width='260' height='120' rx='14'/%3E%3Crect x='380' y='90' width='330' height='120' rx='14'/%3E%3Crect x='90' y='240' width='330' height='140' rx='14'/%3E%3Crect x='450' y='240' width='260' height='140' rx='14'/%3E%3C/g%3E%3Ccircle cx='220' cy='150' r='28' fill='%2322d3ee' opacity='0.6'/%3E%3Ctext x='60' y='60' fill='%2367e8f9' font-family='Arial' font-size='26' font-weight='bold'%3ETracking Setup%3C/text%3E%3C/svg%3E" alt="Advanced Tracking Setup placeholder graphic">
+<div class="slide-caption">
+<span>GTM &middot; GA4 &middot; CAPI</span>
+<h4>Advanced Tracking Setup</h4>
+<p>Server-side tracking configured for accurate attribution.</p>
+</div>
+</div>
+
+</div>
+
+<button class="slider-arrow prev" aria-label="Previous slide">&#10094;</button>
+<button class="slider-arrow next" aria-label="Next slide">&#10095;</button>
+
+<div class="slider-dots">
+<span class="dot active" data-index="0"></span>
+<span class="dot" data-index="1"></span>
+<span class="dot" data-index="2"></span>
+</div>
+
+</div>
 </div>
 
 </div>
@@ -497,6 +645,54 @@ Looking for a performance marketer who understands eCommerce growth, lead genera
 <footer>
 © 2026 Mohammad Amir Khan | Digital Marketing Portfolio
 </footer>
+
+<script>
+(function(){
+    var slider = document.getElementById('results-slider');
+    var track = slider.querySelector('.slider-track');
+    var slides = slider.querySelectorAll('.slide');
+    var dots = slider.querySelectorAll('.dot');
+    var prevBtn = slider.querySelector('.slider-arrow.prev');
+    var nextBtn = slider.querySelector('.slider-arrow.next');
+    var current = 0;
+    var timer;
+
+    function goTo(index){
+        current = (index + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(dot,i){
+            dot.classList.toggle('active', i === current);
+        });
+    }
+
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+
+    function startAutoplay(){
+        timer = setInterval(next, 4000);
+    }
+
+    function stopAutoplay(){
+        clearInterval(timer);
+    }
+
+    nextBtn.addEventListener('click', function(){ next(); stopAutoplay(); startAutoplay(); });
+    prevBtn.addEventListener('click', function(){ prev(); stopAutoplay(); startAutoplay(); });
+
+    dots.forEach(function(dot){
+        dot.addEventListener('click', function(){
+            goTo(parseInt(dot.getAttribute('data-index'), 10));
+            stopAutoplay();
+            startAutoplay();
+        });
+    });
+
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+})();
+</script>
 
 </body>
 </html>
