@@ -1181,11 +1181,11 @@ Digital Marketing Specialist <span>/</span> Paid Media Buyer <span>/</span> Conv
 </p>
 
 <p>
-I help businesses generate qualified leads and increase online sales through data-driven advertising strategies, advanced conversion tracking, and high-performing paid media campaigns across Meta, Google, and TikTok Ads. With 3+ years of experience and work across 250+ businesses globally, I focus on scaling revenue, improving ROAS, and generating measurable business growth.
+I help businesses turn paid media into predictable, measurable growth. With 3+ years of experience and 250+ projects across international markets, I manage the complete performance marketing journey from strategy, campaign execution, and advanced conversion tracking to optimization and scaling across Meta, Google, and TikTok Ads. I focus on qualified leads, profitable sales, stronger ROAS, and sustainable growth, while keeping decisions data-driven and performance transparent. My goal is simple: to become a marketing partner you can trust to take ownership of your growth.
 </p>
 
 <div class="buttons">
-<a href="mailto:amirkhan280495@gmail.com" class="btn btn-primary">Schedule a Call</a>
+<a href="mailto:amir.adworks@gmail.com" class="btn btn-primary">Schedule a Call</a>
 <a href="#projects" class="btn btn-secondary">View Case Studies</a>
 </div>
 
@@ -1495,9 +1495,9 @@ Looking for a performance marketer who understands eCommerce growth, lead genera
 
 <div class="contact-info">
 
-<a href="mailto:amirkhan280495@gmail.com">
+<a href="mailto:amir.adworks@gmail.com">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 7 9-7"/></svg>
-amirkhan280495@gmail.com
+amir.adworks@gmail.com
 </a>
 
 <a href="tel:+8801305554599">
@@ -1586,6 +1586,7 @@ var slider = document.getElementById('results-slider');
 var track = slider.querySelector('.slider-track');
 var slides = slider.querySelectorAll('.slide');
 var thumbs = document.querySelectorAll('.thumb');
+var thumbRail = document.getElementById('thumbs');
 var currentLabel = document.getElementById('slide-current');
 var totalLabel = document.getElementById('slide-total');
 var progressFill = document.getElementById('progress-fill');
@@ -1615,9 +1616,15 @@ function goTo(index){
         t.classList.toggle('active', i === current);
     });
 
+    /* scroll the rail itself - scrollIntoView() would drag the whole page here */
     var activeThumb = thumbs[current];
-    if(activeThumb && activeThumb.scrollIntoView){
-        activeThumb.scrollIntoView({ behavior:'smooth', inline:'nearest', block:'nearest' });
+    if(activeThumb && thumbRail){
+        var target = activeThumb.offsetLeft - (thumbRail.clientWidth - activeThumb.offsetWidth) / 2;
+        var max = thumbRail.scrollWidth - thumbRail.clientWidth;
+        thumbRail.scrollTo({
+            left: Math.max(0, Math.min(target, max)),
+            behavior:'smooth'
+        });
     }
 
     restartProgress();
