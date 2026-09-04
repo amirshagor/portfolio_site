@@ -38,6 +38,7 @@
 html{
     scroll-behavior:smooth;
     scroll-padding-top:90px;
+    overflow-x:clip;          /* clip, not hidden - keeps position:sticky working */
 }
 
 body{
@@ -45,7 +46,7 @@ body{
     background:var(--bg);
     color:var(--text);
     line-height:1.65;
-    overflow-x:hidden;
+    overflow-x:clip;
     -webkit-font-smoothing:antialiased;
 }
 
@@ -77,12 +78,20 @@ body{
     mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
 }
 
-.orb{
+/* clipping layer: keeps the off-screen orbs from widening the page */
+.bg-orbs{
     position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.orb{
+    position:absolute;
     border-radius:50%;
     filter:blur(90px);
     opacity:0.5;
-    z-index:-1;
     pointer-events:none;
 }
 
@@ -247,20 +256,6 @@ h1,h2,h3,h4,.stat-number,.slider-count{
     gap:12px;
     text-decoration:none;
     color:var(--text);
-}
-
-.brand-mark{
-    width:40px;
-    height:40px;
-    display:grid;
-    place-items:center;
-    border-radius:12px;
-    font-family:var(--display);
-    font-size:14px;
-    font-weight:900;
-    color:#02121a;
-    background:linear-gradient(135deg,var(--cyan),var(--violet));
-    box-shadow:0 0 22px rgba(34,211,238,0.45);
 }
 
 .brand-text{
@@ -549,16 +544,17 @@ h1,h2,h3,h4,.stat-number,.slider-count{
 }
 
 .stats-grid{
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
 }
 
+/* min() keeps the track from forcing a wider-than-viewport column on small screens */
 .services-grid,
 .projects-grid{
-    grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));
 }
 
 .skills-grid{
-    grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(165px,100%),1fr));
     gap:16px;
 }
 
@@ -1088,7 +1084,7 @@ section{
 }
 
 .hero-image{
-    width:320px;
+    width:min(320px,100%);
     margin:auto;
 }
 
@@ -1157,15 +1153,16 @@ html{
 
 <div class="bg-layer"></div>
 <div class="bg-grid"></div>
+<div class="bg-orbs">
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
+</div>
 
 <!-- ============================= NAV ============================= -->
 <header class="nav" id="nav">
 <div class="container nav-inner">
 
 <a href="#top" class="brand">
-<span class="brand-mark">AK</span>
 <span class="brand-text">
 Amir Khan
 <small>Performance Marketer</small>
@@ -1192,7 +1189,7 @@ Amir Khan
 
 <div class="badge">
 <span class="pulse"></span>
-Lead Generation &amp; eCommerce Growth Expert
+Performance Marketer &amp; eCommerce Growth Expert
 </div>
 
 <h1>
